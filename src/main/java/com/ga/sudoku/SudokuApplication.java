@@ -1,13 +1,25 @@
 package com.ga.sudoku;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.ga.sudoku.exception.InvalidCharacterException;
+import com.ga.sudoku.exception.SudokuFileNotFoundException;
 
-@SpringBootApplication
+import java.io.IOException;
+
 public class SudokuApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SudokuApplication.class, args);
-	}
+		Sudoku sudoku = new Sudoku();
 
+		try {
+			System.out.println("Puzzle 1");
+			sudoku.loadPuzzle("puzzle1.txt");
+			sudoku.printBoard();
+
+		} catch (SudokuFileNotFoundException
+				 | InvalidCharacterException
+				 | IOException e) {
+
+			System.err.println("Error: " + e.getMessage());
+		}
+	}
 }

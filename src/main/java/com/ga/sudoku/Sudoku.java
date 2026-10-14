@@ -65,4 +65,24 @@ public class Sudoku {
         }
     }
 
+    public void printBoard() {
+        for (int row = 0; row < 9; row++) {
+
+            if (row == 3 || row == 6) {
+                System.out.println("----------------------------------");
+                System.out.println();
+            }
+
+            for (int col = 0; col < 9; col++) {
+
+                if (col == 3 || col == 6) {
+                    System.out.print("| ");
+                }
+
+                System.out.print(board[row][col].getValue() + "  ");
+            }
+
+            System.out.println();
+        }
+    }
 }
