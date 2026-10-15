@@ -85,4 +85,8 @@ public class Sudoku {
             System.out.println();
         }
     }
+
+    public SudokuCell[][] getBoard() {
+        return board;
+    }
 }

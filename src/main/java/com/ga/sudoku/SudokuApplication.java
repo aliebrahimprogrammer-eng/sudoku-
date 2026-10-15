@@ -15,6 +15,17 @@ public class SudokuApplication {
 			sudoku.loadPuzzle("puzzle1.txt");
 			sudoku.printBoard();
 
+			SudokuSolver solver =
+					new SudokuSolver(sudoku.getBoard());
+
+			if (solver.solve()) {
+				System.out.println("\nPuzzle 1 Solved");
+				sudoku.printBoard();
+			} else {
+				System.out.println(
+						"The puzzle has no valid solution."
+				);
+			}
 		} catch (SudokuFileNotFoundException
 				 | InvalidCharacterException
 				 | IOException e) {
