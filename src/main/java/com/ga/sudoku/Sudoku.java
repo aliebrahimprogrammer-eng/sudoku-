@@ -14,20 +14,8 @@ public class Sudoku {
 
     private final SudokuCell[][] board = new SudokuCell[9][9];
 
-    public void loadPuzzle(String fileName)
-            throws SudokuFileNotFoundException,
-            InvalidCharacterException,
-            IOException {
-
-        String path = "/puzzles/" + fileName;
-
-        InputStream input = getClass().getResourceAsStream(path);
-
-        if (input == null) {
-            throw new SudokuFileNotFoundException(
-                    "Puzzle file not found: " + fileName
-            );
-        }
+    public void loadPuzzle(InputStream input)
+            throws InvalidCharacterException, IOException {
 
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(input, StandardCharsets.UTF_8))) {
@@ -52,8 +40,8 @@ public class Sudoku {
                         );
                     }
 
-                    int value = character - '0';
-                    board[row][col] = new SudokuCell(value);
+                    board[row][col] =
+                            new SudokuCell(character - '0');
                 }
             }
 
